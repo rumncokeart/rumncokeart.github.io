@@ -92,20 +92,15 @@ select {
   box-shadow: 0 1px 0 var(--line);
 }
 
-.site-header.is-over-hero:not(.is-scrolled) .brand,
 .site-header.is-over-hero:not(.is-scrolled) .nav-link,
 .site-header.is-over-hero:not(.is-scrolled) .nav-toggle {
   color: #f7f4ee;
   filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35));
 }
 
-/* Signature JPG has a white matte — hide it on the translucent hero header */
+/* Signature is dark ink — flip it to light over the dark hero */
 .site-header.is-over-hero:not(.is-scrolled) .brand-mark {
-  display: none;
-}
-
-.site-header.is-over-hero:not(.is-scrolled) .brand-word {
-  display: inline;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
 }
 
 .brand {
@@ -117,10 +112,14 @@ select {
 }
 
 .brand-mark {
-  height: 42px;
+  height: 40px;
   width: auto;
   object-fit: contain;
-  mix-blend-mode: multiply;
+  transition: filter 0.4s var(--ease);
+}
+
+.brand-word {
+  display: none;
 }
 
 .brand-word {
@@ -1104,16 +1103,9 @@ select {
     filter: none;
   }
 
+  /* Menu open over hero shows a light panel — restore dark signature */
   .site-header.is-over-hero:not(.is-scrolled).nav-open .brand-mark {
-    display: block;
-  }
-
-  .brand-word {
-    display: none;
-  }
-
-  .site-header.is-over-hero:not(.is-scrolled) .brand-word {
-    display: inline;
+    filter: none;
   }
 
   .exhibit-list li,
