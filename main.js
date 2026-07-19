@@ -176,8 +176,30 @@
       status.classList.toggle('is-error', !!isError);
     };
 
+    // Lightweight human check: a randomized arithmetic question
+    const humanInput = form.querySelector('#human-check');
+    const humanQuestion = form.querySelector('[data-human-question]');
+    let humanAnswer = 0;
+    const newHumanCheck = () => {
+      if (!humanInput || !humanQuestion) return;
+      const a = 2 + Math.floor(Math.random() * 8);
+      const b = 2 + Math.floor(Math.random() * 8);
+      humanAnswer = a + b;
+      humanQuestion.textContent = `${a} + ${b}`;
+      humanInput.value = '';
+    };
+    newHumanCheck();
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
+      if (humanInput && parseInt(humanInput.value, 10) !== humanAnswer) {
+        setStatus('Please answer the quick check correctly.', true);
+        newHumanCheck();
+        humanInput.focus();
+        return;
+      }
+
       setStatus('Sending…', false);
       if (submitBtn) submitBtn.disabled = true;
 
@@ -192,6 +214,7 @@
 
         if (ok) {
           form.reset();
+          newHumanCheck();
           setStatus('Thank you. Your message is on its way.', false);
         } else if (data.message) {
           // e.g. the one-time "please activate this form" notice
