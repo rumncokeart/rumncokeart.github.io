@@ -107,6 +107,62 @@
     });
   }
 
+  /* Cookie consent banner (Google Consent Mode) */
+  const CONSENT_KEY = 'rs-consent';
+  const gtag = function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(arguments);
+  };
+
+  const applyConsent = (granted) => {
+    gtag('consent', 'update', {
+      analytics_storage: granted ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  };
+
+  const stored = (() => {
+    try {
+      return localStorage.getItem(CONSENT_KEY);
+    } catch (e) {
+      return null;
+    }
+  })();
+
+  if (stored === 'granted') {
+    applyConsent(true);
+  } else if (stored !== 'denied') {
+    const banner = document.createElement('aside');
+    banner.className = 'consent';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie preferences');
+    banner.innerHTML = `
+      <h2>A note on cookies</h2>
+      <p>This site uses a few analytics cookies to understand how visitors discover the work. You can accept or decline — the choice is remembered.</p>
+      <div class="consent-actions">
+        <button class="btn btn-solid" type="button" data-consent="granted">Accept</button>
+        <button class="btn btn-outline" type="button" data-consent="denied">Decline</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner.classList.add('is-visible'));
+
+    banner.addEventListener('click', (event) => {
+      const choice = event.target.getAttribute('data-consent');
+      if (!choice) return;
+      try {
+        localStorage.setItem(CONSENT_KEY, choice);
+      } catch (e) {
+        /* ignore storage errors */
+      }
+      applyConsent(choice === 'granted');
+      banner.classList.remove('is-visible');
+      setTimeout(() => banner.remove(), 500);
+    });
+  }
+
   /* Contact form enhancement */
   const form = document.querySelector('.contact-form');
   if (form) {
