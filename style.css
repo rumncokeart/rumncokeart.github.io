@@ -433,7 +433,7 @@ select {
 .works-rail {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 2.75rem 1.5rem;
 }
 
 .work-tile {
@@ -458,7 +458,7 @@ select {
 }
 
 .work-meta {
-  margin-top: 0.9rem;
+  margin-top: 0.55rem;
 }
 
 .work-meta h3 {
