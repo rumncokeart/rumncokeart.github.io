@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg: #faf9f6;
-  --bg-deep: #eae7e1;
-  --ink: #17150f;
-  --ink-soft: #4c483f;
-  --muted: #857e72;
-  --line: rgba(23, 21, 15, 0.09);
-  --surface: rgba(255, 255, 255, 0.55);
-  --teal: #1f5c58;
-  --teal-deep: #13403d;
-  --rose: #9c3d55;
-  --gold: #a8844a;
+  --bg: #131210;
+  --bg-deep: #211e18;
+  --ink: #ece6da;
+  --ink-soft: #b4ada0;
+  --muted: #8a8375;
+  --line: rgba(236, 230, 218, 0.14);
+  --surface: rgba(255, 255, 255, 0.06);
+  --teal: #7cb9ae;
+  --teal-deep: #a6d4cb;
+  --rose: #dd93a8;
+  --gold: #d0af73;
   --hero-scrim: linear-gradient(
     105deg,
     rgba(19, 24, 22, 0.72) 0%,
@@ -85,7 +85,7 @@ select {
 
 .site-header.is-scrolled,
 .site-header.is-solid {
-  background: rgba(250, 249, 246, 0.85);
+  background: rgba(19, 18, 16, 0.8);
   backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 var(--line);
 }
@@ -113,6 +113,7 @@ select {
   height: 40px;
   width: auto;
   object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 5px rgba(0, 0, 0, 0.4));
   transition: filter 0.4s var(--ease);
 }
 
@@ -266,8 +267,8 @@ select {
 }
 
 .btn-primary {
-  background: #f7f4ee;
-  color: var(--ink);
+  background: #f5f2ea;
+  color: #14120f;
 }
 
 .btn-primary:hover {
@@ -289,7 +290,7 @@ select {
 
 .btn-solid {
   background: var(--teal);
-  color: #f7f4ee;
+  color: #10201d;
   border-color: var(--teal);
 }
 
@@ -307,7 +308,7 @@ select {
 
 .btn-outline:hover {
   background: var(--ink);
-  color: #f7f4ee;
+  color: var(--bg);
 }
 
 /* ---------- Sections ---------- */
@@ -732,18 +733,28 @@ select {
 .field select {
   width: 100%;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
   padding: 0.9rem 1rem;
   outline: none;
   transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
 }
 
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
   border-color: var(--teal);
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(31, 92, 88, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(124, 185, 174, 0.18);
+}
+
+.field select option {
+  color: #14120f;
 }
 
 .field textarea {
@@ -933,7 +944,7 @@ select {
   max-width: 440px;
   margin-left: auto;
   padding: 1.5rem 1.6rem 1.4rem;
-  background: rgba(250, 249, 246, 0.92);
+  background: rgba(24, 22, 19, 0.94);
   backdrop-filter: blur(18px);
   border: 1px solid var(--line);
   border-top: 2px solid var(--teal);
@@ -1067,7 +1078,7 @@ select {
     flex-direction: column;
     justify-content: center;
     gap: 1.75rem;
-    background: rgba(250, 249, 246, 0.97);
+    background: rgba(19, 18, 16, 0.97);
     backdrop-filter: blur(16px);
     transform: translateY(-105%);
     transition: transform 0.45s var(--ease);
@@ -1101,9 +1112,9 @@ select {
     filter: none;
   }
 
-  /* Menu open over hero shows a light panel, so restore dark signature */
+  /* Signature stays light on the dark mobile menu */
   .site-header.is-over-hero:not(.is-scrolled).nav-open .brand-mark {
-    filter: none;
+    filter: brightness(0) invert(1);
   }
 
   .exhibit-list li,
