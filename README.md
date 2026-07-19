@@ -1,15 +1,15 @@
-# Ramya Shenoy — Artist Website
+# Ramya Shenoy Artist Website
 
 Personal portfolio site for contemporary figurative painter [Ramya Shenoy](https://www.ramyashenoy.art).
 
 ## Pages
 
-- `index.html` — Home / work overview
-- `acts-of-defiance.html` — Series gallery
-- `chrysalis.html` — Series gallery
-- `about.html` — Biography & artist statement
-- `cv.html` — Exhibitions & education
-- `contact.html` — Studio inquiry form
+- `index.html`: Home / work overview
+- `acts-of-defiance.html`: Series gallery
+- `chrysalis.html`: Series gallery
+- `about.html`: Biography and artist statement
+- `cv.html`: Exhibitions and education
+- `contact.html`: Studio inquiry form
 
 ## Local preview
 

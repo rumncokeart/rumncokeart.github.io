@@ -98,7 +98,7 @@ select {
   filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35));
 }
 
-/* Signature is dark ink — flip it to light over the dark hero */
+/* Signature is dark ink, so flip it to light over the dark hero */
 .site-header.is-over-hero:not(.is-scrolled) .brand-mark {
   filter: brightness(0) invert(1) drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
 }
@@ -1103,7 +1103,7 @@ select {
     filter: none;
   }
 
-  /* Menu open over hero shows a light panel — restore dark signature */
+  /* Menu open over hero shows a light panel, so restore dark signature */
   .site-header.is-over-hero:not(.is-scrolled).nav-open .brand-mark {
     filter: none;
   }

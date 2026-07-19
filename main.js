@@ -140,7 +140,7 @@
     banner.setAttribute('aria-label', 'Cookie preferences');
     banner.innerHTML = `
       <h2>A note on cookies</h2>
-      <p>This site uses a few analytics cookies to understand how visitors discover the work. You can accept or decline — the choice is remembered.</p>
+      <p>This site uses a few analytics cookies to understand how visitors discover the work. You can accept or decline, and your choice is remembered.</p>
       <div class="consent-actions">
         <button class="btn btn-solid" type="button" data-consent="granted">Accept</button>
         <button class="btn btn-outline" type="button" data-consent="denied">Decline</button>
