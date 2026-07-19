@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Page not found | Ramya Shenoy</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+  <header class="site-header is-solid">
+    <a class="brand" href="/index.html" aria-label="Ramya Shenoy home">
+      <img class="brand-mark" src="/images/signature.png" alt="Ramya Shenoy"/>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="nav-link" href="/index.html">Work</a>
+      <a class="nav-link" href="/about.html">About</a>
+      <a class="nav-link" href="/cv.html">CV</a>
+      <a class="nav-link" href="/contact.html">Contact</a>
+      <a class="nav-link" href="https://www.instagram.com/ramyashenoy.art" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" style="min-height: 74vh; display: grid; place-items: center; text-align: center;">
+      <div class="section-inner" style="max-width: 620px;">
+        <p class="section-kicker">Error 404</p>
+        <h1 class="section-title">This page wandered off</h1>
+        <p class="section-lead" style="margin: 0 auto 2.25rem;">The page you’re looking for doesn’t exist or has moved. Let’s get you back to the work.</p>
+        <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-solid" href="/index.html">Back to home</a>
+          <a class="btn btn-outline" href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© Ramya Shenoy <span id="year">2026</span></p>
+      <div class="footer-links">
+        <a href="mailto:rumshenoy@gmail.com">rumshenoy@gmail.com</a>
+        <a href="https://www.instagram.com/ramyashenoy.art" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
