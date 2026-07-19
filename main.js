@@ -167,10 +167,42 @@
   const form = document.querySelector('.contact-form');
   if (form) {
     const status = form.querySelector('.form-status');
-    form.addEventListener('submit', () => {
-      if (status) {
-        status.textContent = 'Sending…';
-        status.classList.remove('is-error');
+    const submitBtn = form.querySelector('[type="submit"]');
+    const endpoint = 'https://formsubmit.co/ajax/rumshenoy@gmail.com';
+
+    const setStatus = (msg, isError) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.classList.toggle('is-error', !!isError);
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus('Sending…', false);
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const data = await res.json().catch(() => ({}));
+        const ok = res.ok && String(data.success) === 'true';
+
+        if (ok) {
+          form.reset();
+          setStatus('Thank you. Your message is on its way.', false);
+        } else if (data.message) {
+          // e.g. the one-time "please activate this form" notice
+          setStatus(data.message, true);
+        } else {
+          throw new Error('submit failed');
+        }
+      } catch (err) {
+        setStatus('Something went wrong. Please email rumshenoy@gmail.com directly.', true);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
