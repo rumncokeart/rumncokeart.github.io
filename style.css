@@ -1297,8 +1297,18 @@ select {
 }
 
 .watch-list li {
-  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
   border-bottom: 1px solid var(--line);
+}
+
+.watch-poster img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
 }
 
 .watch-list li:first-child {
@@ -1410,7 +1420,8 @@ select {
     grid-column: 1 / -1;
   }
 
-  .book {
+  .book,
+  .watch-list li {
     grid-template-columns: 5.5rem 1fr;
     gap: 1.1rem;
   }
