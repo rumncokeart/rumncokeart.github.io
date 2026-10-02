@@ -163,12 +163,19 @@
     });
   }
 
+  /* Email is assembled at runtime so the plain address isn't in the page source for scrapers */
+  const contactEmail = ['rumshenoy', 'gmail.com'].join('@');
+  document.querySelectorAll('.js-email').forEach((el) => {
+    el.href = `mailto:${contactEmail}`;
+    el.textContent = contactEmail;
+  });
+
   /* Contact form enhancement */
   const form = document.querySelector('.contact-form');
   if (form) {
     const status = form.querySelector('.form-status');
     const submitBtn = form.querySelector('[type="submit"]');
-    const endpoint = 'https://formsubmit.co/ajax/rumshenoy@gmail.com';
+    const endpoint = `https://formsubmit.co/ajax/${contactEmail}`;
 
     const setStatus = (msg, isError) => {
       if (!status) return;
@@ -223,7 +230,7 @@
           throw new Error('submit failed');
         }
       } catch (err) {
-        setStatus('Something went wrong. Please email rumshenoy@gmail.com directly.', true);
+        setStatus(`Something went wrong. Please email ${contactEmail} directly.`, true);
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
